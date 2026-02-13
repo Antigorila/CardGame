@@ -1,0 +1,47 @@
+-- Gombok érzékalése:
+
+if (Raylib.IsKeyDown(KeyboardKey.A))
+{
+    // addig fut amíg le van nyomva
+    Window_Controller.Write("'A' down", Color.White, 15, new Vector2(50,50));
+}
+
+if (Raylib.IsKeyPressed(KeyboardKey.S))
+{
+    // egyszer fut le lenyomáskor
+    Window_Controller.Write("'S' pressed", Color.White, 15, new Vector2(50, 50));
+}
+
+if (Raylib.IsKeyReleased(KeyboardKey.D))
+{
+    // akkor fut, amikor elengeded
+    Window_Controller.Write("'D' released", Color.White, 15, new Vector2(50, 50));
+}
+
+-- Szöveg kiírása:
+Raylib.DrawText(text, (int)position.X, (int)position.Y, fontSize, color);
+
+Font méretek:
+- small: 18px
+- medium: 32px
+- large: 72px
+
+-- Kirajzolható formák Raylib-ból:
+- Téglalap
+    Raylib.DrawRectangle(x, y, width, height, Color.BLUE);
+    Raylib.DrawRectangleLines(x, y, width, height, Color.BLACK);
+- Lekerekített téglalap
+    Raylib.DrawRectangleRounded(
+        new Rectangle(100, 100, 200, 100),
+        0.2f,   // lekerekítés aránya
+        10,     // szegmensek száma
+        Color.GRAY
+    );
+- Kör
+    Raylib.DrawCircle(x, y, radius, Color.RED);
+    Raylib.DrawEllipse(x, y, radiusX, radiusY, Color.GREEN);
+- Vonalak
+    Raylib.DrawLine(x1, y1, x2, y2, Color.WHITE);
+    Raylib.DrawLineEx(start, end, thickness, Color.WHITE);
+- Poligonok... ez ilyen 5 szög
+    Raylib.DrawPoly(center, sides, radius, rotation, Color.YELLOW);
