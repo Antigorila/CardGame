@@ -82,7 +82,11 @@ namespace CardGame.Classes_UI
         public override void Draw()
         {
             base.Draw();
-            FontController.Write(Text, TextColor, TextSize, GetTextPosition());
+
+            if (this.Text != string.Empty)
+            {
+                Font_Controller.Write(Text, TextColor, TextSize, GetTextPosition());
+            }
         }
 
         private Vector2 GetTextPosition()
@@ -94,22 +98,32 @@ namespace CardGame.Classes_UI
             switch (TextOrientation)
             {
                 case OrientationAnchor.CenterTop:
-                    x += this.Width / 3f;
+                    x += (this.Width / 2f) - Text.MeasureText(this.TextSize).X / 2f;
                     break;
                 case OrientationAnchor.RightTop:
-                    x += (this.Width / 3f) * 2f;
+                    x += this.Width - Text.MeasureText(this.TextSize).X;
                     break;
                 case OrientationAnchor.LeftMiddle:
+                    y += (this.Height / 2f) - Text.MeasureText(this.TextSize).Y / 2f;
                     break;
                 case OrientationAnchor.CenterMiddle:
+                    x += (this.Width / 2f) - Text.MeasureText(this.TextSize).X / 2f;
+                    y += (this.Height / 2f) - Text.MeasureText(this.TextSize).Y / 2f;
                     break;
                 case OrientationAnchor.RightMiddle:
+                    x += this.Width - Text.MeasureText(this.TextSize).X;
+                    y += (this.Height / 2f) - Text.MeasureText(this.TextSize).Y / 2f;
                     break;
                 case OrientationAnchor.LeftBottom:
+                    y += this.Height - Text.MeasureText(this.TextSize).Y;
                     break;
                 case OrientationAnchor.CenterBottom:
+                    x += (this.Width / 2f) - Text.MeasureText(this.TextSize).X / 2f;
+                    y += this.Height - Text.MeasureText(this.TextSize).Y;
                     break;
                 case OrientationAnchor.RightBottom:
+                    x += this.Width - Text.MeasureText(this.TextSize).X;
+                    y += this.Height - Text.MeasureText(this.TextSize).Y;
                     break;
             }
 

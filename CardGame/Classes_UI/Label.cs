@@ -44,9 +44,9 @@ namespace CardGame.Classes_UI
         public void WrapAroundText() //TODO: teszt
         {
             Vector2 size = Raylib.MeasureTextEx(
-                FontController.GetFont(this.TextSize),
+                Font_Controller.GetFont(this.TextSize),
                 this.Text,
-                FontController.GetFontSize(this.TextSize),
+                Font_Controller.GetFontSize(this.TextSize),
                 2.0f
             );
 

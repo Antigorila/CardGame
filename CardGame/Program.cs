@@ -27,14 +27,14 @@ namespace CardGame
             backgroundImage = Raylib.LoadTexture("../../../Assets/Background/paper.jpg");
 
             //Fonts:
-            FontController.SetFont(Raylib.LoadFontEx("../../../Assets/Fonts/PlayfairDisplay-VariableFont_wght.ttf", 18, null, 0), FontSize.Small);
-            FontController.SetFont(Raylib.LoadFontEx("../../../Assets/Fonts/PlayfairDisplay-VariableFont_wght.ttf", 32, null, 0), FontSize.Medium);
-            FontController.SetFont(Raylib.LoadFontEx("../../../Assets/Fonts/PlayfairDisplay-VariableFont_wght.ttf", 72, null, 0), FontSize.Large);
+            Font_Controller.SetFont(Raylib.LoadFontEx("../../../Assets/Fonts/PlayfairDisplay-VariableFont_wght.ttf", 18, null, 0), FontSize.Small);
+            Font_Controller.SetFont(Raylib.LoadFontEx("../../../Assets/Fonts/PlayfairDisplay-VariableFont_wght.ttf", 32, null, 0), FontSize.Medium);
+            Font_Controller.SetFont(Raylib.LoadFontEx("../../../Assets/Fonts/PlayfairDisplay-VariableFont_wght.ttf", 72, null, 0), FontSize.Large);
 
         }
 
         private static Button btn = new Button(35,35);
-        private static Button btn2 = new Button();
+        private static Button btn2 = new Button(150,150);
         private static void Update()
         {
             backgroundImage.Width = Window_Controller.ScreenWidth;
@@ -50,12 +50,12 @@ namespace CardGame
             string t = "TestText";
             btn2.Text = t;
             btn2.TextSize = FontSize.Medium;
-           
-
-            btn2.Width = (int)t.MeasureText(btn2.TextSize).X;
-            btn2.Height = (int)t.MeasureText(btn2.TextSize).Y;
+            btn2.StickToSidePosition(OrientationAnchor.CenterMiddle, OrientationAnchor.CenterMiddle);
+            btn2.TextOrientation = OrientationAnchor.LeftBottom;
 
 
+            //btn2.Width = (int)t.MeasureText(btn2.TextSize).X;
+            //btn2.Height = (int)t.MeasureText(btn2.TextSize).Y;
 
 
 
@@ -65,19 +65,19 @@ namespace CardGame
             if (Raylib.IsKeyDown(KeyboardKey.A))
             {
                 // addig fut amíg le van nyomva
-                FontController.Write("'A' down", Color.White, FontSize.Large, new Vector2(50, 50));
+                Font_Controller.Write("'A' down", Color.White, FontSize.Large, new Vector2(50, 50));
             }
 
             if (Raylib.IsKeyPressed(KeyboardKey.S))
             {
                 // egyszer fut le lenyomáskor
-                FontController.Write("'S' pressed", Color.White, FontSize.Medium, new Vector2(50, 50));
+                Font_Controller.Write("'S' pressed", Color.White, FontSize.Medium, new Vector2(50, 50));
             }
 
             if (Raylib.IsKeyReleased(KeyboardKey.D))
             {
                 // akkor fut, amikor elengeded
-                FontController.Write("'D' released", Color.Black, FontSize.Small, new Vector2(150, 150));
+                Font_Controller.Write("'D' released", Color.Black, FontSize.Small, new Vector2(150, 150));
             }
 
 
@@ -102,10 +102,10 @@ namespace CardGame
             Raylib.DrawLineEx(new Vector2(0, 498), new Vector2(1000, 498), 10, Color.White);
 
 
-            FontController.Write("[0 : 0]", Color.White, FontSize.Medium, new Vector2(0, 0));
-            FontController.Write($"[0 : H{Window_Controller.ScreenHeight}]", Color.White, FontSize.Medium, new Vector2(0, Window_Controller.ScreenHeight - 50));
-            FontController.Write($"[W{Window_Controller.ScreenWidth} : 0]", Color.White, FontSize.Medium, new Vector2(Window_Controller.ScreenWidth - 150, 0));
-            FontController.Write($"[W{Window_Controller.ScreenWidth} : H{Window_Controller.ScreenHeight}]", Color.White, FontSize.Medium, new Vector2(Window_Controller.ScreenWidth - 200, Window_Controller.ScreenHeight - 50));
+            Font_Controller.Write("[0 : 0]", Color.White, FontSize.Medium, new Vector2(0, 0));
+            Font_Controller.Write($"[0 : H{Window_Controller.ScreenHeight}]", Color.White, FontSize.Medium, new Vector2(0, Window_Controller.ScreenHeight - 50));
+            Font_Controller.Write($"[W{Window_Controller.ScreenWidth} : 0]", Color.White, FontSize.Medium, new Vector2(Window_Controller.ScreenWidth - 150, 0));
+            Font_Controller.Write($"[W{Window_Controller.ScreenWidth} : H{Window_Controller.ScreenHeight}]", Color.White, FontSize.Medium, new Vector2(Window_Controller.ScreenWidth - 200, Window_Controller.ScreenHeight - 50));
 
 
 
@@ -119,7 +119,7 @@ namespace CardGame
                 case Game_Controller.GameState.Loading:
                     break;
                 case Game_Controller.GameState.StartScreen:
-                    FontController.Write("StartScreen", Color.Red);
+                    Font_Controller.Write("StartScreen", Color.Red);
                     break;
                 default:
                     break;

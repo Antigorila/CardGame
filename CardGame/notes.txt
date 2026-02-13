@@ -1,4 +1,4 @@
--- Gombok érzékalése:
+-- Gombok érzékelése:
 
 if (Raylib.IsKeyDown(KeyboardKey.A))
 {

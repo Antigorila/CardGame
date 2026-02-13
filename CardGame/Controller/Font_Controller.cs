@@ -12,7 +12,7 @@ namespace CardGame.Controller
         Medium,
         Large
     }
-    public static class FontController
+    public static class Font_Controller
     {
         private static Font font_small;
         private static Font font_medium;
